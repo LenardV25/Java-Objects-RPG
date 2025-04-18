@@ -1,5 +1,5 @@
 public class enemy {
-    private String name;
+    public String name;
     private int healthPoints;
     private int attackPower;
     private int level;
@@ -48,4 +48,23 @@ public class enemy {
     public void displayInfo(){
         System.out.println("Enemy: "+ this.name + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
     }
+
+    public int attack(){
+        System.out.println(this.name+ " attack the you for "+ attackPower+ " damage!");
+        return this.attackPower;
+    }
+
+    public int takeDamage(int amount){
+        this.healthPoints-=amount;
+        System.out.println(this.name + " took "+amount+" damage");
+        return this.healthPoints;
+    }
+
+    public boolean isDefeated(){
+        if (healthPoints <= 0 ){
+            System.out.println("The "+ this.name + " has been slained!");
+            return true;
+        }
+        else return false;
+      }
 }
