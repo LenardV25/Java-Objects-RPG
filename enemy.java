@@ -1,0 +1,51 @@
+public class enemy {
+    private String name;
+    private int healthPoints;
+    private int attackPower;
+    private int level;
+
+    public enemy(String name, int healthPoints, int attackPower, int level){
+        this.name = name;
+        this.healthPoints = healthPoints;
+        this.attackPower = attackPower;
+        this.level = level;
+
+    }
+
+    public String getName(){
+        return this.name;
+
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public int getHealthPoints(){
+        return this.healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints){
+        this.healthPoints = healthPoints;
+
+    }
+
+    public int getAttackPower(){
+        return this.attackPower;
+    }
+
+    public void setAttackPower(int attackPower){
+        this.attackPower = attackPower;
+    }
+
+    public int getLevel(){
+        return this.level;
+    }
+
+    public void setLevel(int level){
+        this.level = level;
+    }
+
+    public void displayInfo(){
+        System.out.println("Enemy: "+ this.name + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
+    }
+}
