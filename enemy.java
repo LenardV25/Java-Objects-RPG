@@ -45,8 +45,9 @@ public class enemy {
         this.level = level;
     }
 
-    public void displayInfo(){
-        System.out.println("Enemy: "+ this.name + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
+    public String displayInfo(){
+        String status =("Enemy: "+ this.name + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
+        return status;
     }
 
     public int attack(){

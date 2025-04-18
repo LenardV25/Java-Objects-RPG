@@ -23,8 +23,9 @@ public class player{
     //level up mechanic
 
 
-    public void displayInfo(){
-        System.out.println("Character: "+ this.playerName + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
+    public String displayInfo(){
+        String status= ("Character: "+ this.playerName + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
+        return status;
     }
 
     public int attack(){
