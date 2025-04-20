@@ -57,12 +57,14 @@ public class enemy {
 
     public int takeDamage(int amount){
         this.healthPoints-=amount;
+        System.out.println();
         System.out.println(this.name + " took "+amount+" damage");
         return this.healthPoints;
     }
 
     public boolean isDefeated(){
         if (healthPoints <= 0 ){
+            System.out.println();
             System.out.println("The "+ this.name + " has been slained!");
             return true;
         }

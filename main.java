@@ -11,73 +11,81 @@ public class main{
         String name = input.nextLine();
         System.out.println();
         player hero = new player(name);
+        System.out.println(hero.displayInfo());
+        enemy giant = new enemy("Giant", 40, 10, 3);
+        System.out.println();
+        System.out.println("You turn left and face against a giant");
 
         boolean quit = false; //flag controlling game loop
 
         //-- Main Game Loop --
         while(!quit){
-        System.out.println(hero.displayInfo());
         //System.out.println("You enter a fork in the road, do you left or right?");
         //String userChoice = input.nextLine().toLowerCase();
         System.out.println();//spacer
-
-        System.out.println("You turn left and face against a giant");
-        enemy giant = new enemy("Giant", 40, 10, 3);
+        System.out.println(hero.displayInfo());
+        System.out.println();
         System.out.println(giant.displayInfo());
         System.out.println();
         
         //--Main Character Actions--
+        //input.nextLine();
         System.out.println("What would you like to do?");
         System.out.println("1: Attack Enemy");
         System.out.println("2: Retreat");
         System.out.println("3: Exit Game");
         System.out.print("Your Choice (1-3): ");
-        
         int choice = input.nextInt();
-        //while (choice > 3 & choice < 1){
-            //System.out.print("Invalid Choice. Please enter number between 1 and 3: ");
-            //input.nextInt();
-        //}
-
-        //Process based on user choice
+        
+        //Process based on user choice 
         switch(choice){
             case 1:
-                //System.out.println();
-                hero.attack();
-                System.out.println(hero.displayInfo());
                 System.out.println();
-                System.out.println(giant.displayInfo());
+                hero.attack();
+                hero.takeDamage(5);
+                giant.takeDamage(10);
                 break;
 
             case 2:
                 System.out.println();
-                hero.takeDamage(5);
+                hero.takeDamage(10);
                 break;
 
             case 3:
                 System.out.println();
-                quit = true;
+                //System.out.println("Safe Travels "+ hero.playerName.toLowerCase()+ "!");
+                quit = true; //end game loop
                 break;
 
             default:
                 System.out.println();
                 System.out.println("Invalid choice. Please enter number between 1 and 3.");
-                
-
+                System.out.println("1: Attack Enemy");
+                System.out.println("2: Retreat");
+                System.out.println("3: Exit Game");
+                System.out.println("Your Choice (1-3): ");
+                input.nextInt();
+        }
             //check if player has is died
-            if (hero.isDefeated()){
-                System.out.println("Oh no! "+ hero.playerName+ " has taken too much damage");
+            if (hero.isDefeated() == true){
+                System.out.println("Our hero "+ hero.playerName + " has been slained!");
+                System.out.println();
                 System.out.println(hero.displayInfo());
-                System.out.println("The simulation ends. Better luck next time!");
+                System.out.println();
+                System.out.println("The battle has ended. Better luck next time "+ hero.playerName.toLowerCase()+ "!");
                 quit = true; //end game loop
-            } else if (giant.isDefeated()){
-                System.out.println("Congratulations "+ giant.name + " has taken too much damage and died!");
+            } else if (giant.isDefeated()== true){
+                System.out.println("Congratulations the "+ giant.name + " has taken too much damage and died!");
+                System.out.println();
                 System.out.println(giant.displayInfo());
-                System.out.println("The simulation ends. Safe Travels"+ hero.playerName.toUpperCase()+ "!");
+                System.out.println();
+                System.out.println("The battle had ended. Safe Travels "+ hero.playerName.toLowerCase()+ "!");
                 quit = true; //end game loop
-            }
-            }
-        } //end of while loop
+            } else {
+                quit = false; //continue game loop
+            }   
+
+     } //end of while loop
 
     System.out.println("Thanks for playing!");
     input.close(); //close scanner to release system resources
