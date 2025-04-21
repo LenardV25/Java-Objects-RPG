@@ -1,4 +1,9 @@
+import java.util.Scanner;
+
 public class player{
+    //scanner for user to press continue on
+    Scanner readInput = new Scanner(System.in);
+
     public String playerName;
     private int healthPoints;
     private int attackPower;
