@@ -3,7 +3,7 @@ public class player{
     private int healthPoints;
     private int attackPower;
     private int level;
-
+    
 
     public player(String playerName){
         this.playerName= playerName;
@@ -19,9 +19,13 @@ public class player{
     public void setName(String name){
         this.playerName = name;
     }
-
+    //note: need to add public monster total keeping track of kills==>levels
     //level up mechanic
-
+    /*public int levelUp(){
+     * this.level+=1;
+     * System.out.println();
+     * System.out.println(this.playerName+" is now level "+ this.level);
+    } */
 
     public String displayInfo(){
         String status= ("Character: "+ this.playerName + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);

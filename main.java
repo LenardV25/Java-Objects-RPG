@@ -81,9 +81,7 @@ public class main{
                 System.out.println();
                 System.out.println("The battle had ended. Safe Travels "+ hero.playerName.toLowerCase()+ "!");
                 quit = true; //end game loop
-            } else {
-                quit = false; //continue game loop
-            }   
+            } 
 
      } //end of while loop
 
