@@ -13,8 +13,9 @@ public class main{
         System.out.println();
 
     //initailize character stats
-        player hero = new player(name);
+        player hero = new player(name, 30, 10,1);
         System.out.println("Hello "+ hero.playerName+ "!");
+        
 
     //initailize inventory 
         inventory items = new inventory(name);
@@ -54,7 +55,7 @@ public class main{
                 System.out.println();
                 hero.attack();
                 hero.takeDamage(5);
-                giant.takeDamage(10);
+                giant.takeDamage(hero.attack());
                 break;
 
             case 2:
@@ -64,11 +65,35 @@ public class main{
 
             case 3:
                 System.out.println();
-                System.out.println(items.displayInvent());
                 //items.displayInvent();
-                break;
+                System.out.println("This are your current items " + hero.playerName);
+                boolean leaveBag = false;
+        
+                while(!leaveBag){
+                    System.out.println("1) Attack Potions: "+ items.attackPotions+ " remaining\n2) Health Potions: "+ items.healthPotions+" remaining \n3) Return to battle"); 
+                    switch(input.nextInt()){
+                        case 1:
+                        System.out.println();
+                        hero.attackIncrease(items.attackPotion());
+                        break;
                 
-
+                        case 2:
+                        System.out.println();
+                        hero.healthIncrease(items.healthPotion());
+                        //items.healthPotion();
+                        
+                        break;
+        
+                        default:
+                        System.out.println(("You take a deep breath before returning to battle..."));
+                        leaveBag = true;
+                    }
+                }
+                //hero.healthIncrease(items.healthPotion());
+                //items.displayInvent();
+                
+                break;
+               
             case 4:
                 System.out.println();
                 //System.out.println("Safe Travels "+ hero.playerName.toLowerCase()+ "!");

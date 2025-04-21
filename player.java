@@ -5,16 +5,16 @@ public class player{
     Scanner readInput = new Scanner(System.in);
 
     public String playerName;
-    private int healthPoints;
-    private int attackPower;
+    public int healthPoints;
+    public int attackPower;
     private int level;
     
 
-    public player(String playerName){
+    public player(String playerName, int healthPoints, int attackPower, int level){
         this.playerName= playerName;
-        this.healthPoints = 30;
-        this.attackPower = 10;
-        this.level = 1;
+        this.healthPoints = healthPoints;
+        this.attackPower = attackPower;
+        this.level = level;
         
     }
     public String getName(){
@@ -32,6 +32,31 @@ public class player{
      * System.out.println(this.playerName+" is now level "+ this.level);
     } */
 
+    public int getHealthPoints(){
+        return this.healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints){
+        this.healthPoints = healthPoints;
+
+    }
+
+    public int getAttackPower(){
+        return this.attackPower;
+    }
+
+    public void setAttackPower(int attackPower){
+        this.attackPower = attackPower;
+    }
+
+    public int getLevel(){
+        return this.level;
+    }
+
+    public void setLevel(int level){
+        this.level = level;
+    }
+
     public String displayInfo(){
         String status= ("Character: "+ this.playerName + "\nHealth: " +this.healthPoints + "\nDamage: " +this.attackPower+ "\nLevel: " +this.level);
         return status;
@@ -39,7 +64,7 @@ public class player{
 
     public int attack(){
         System.out.println();
-        System.out.println("You attack the enemy for "+ attackPower+ " damage!");
+        System.out.println("You attack the enemy for "+ this.attackPower+ " damage!");
         return this.attackPower;
     }
 
@@ -47,6 +72,18 @@ public class player{
         this.healthPoints-=amount;
         System.out.println();
         System.out.println(this.playerName + " took "+amount+" damage");
+        return this.healthPoints;
+    }
+
+    public int attackIncrease(int bonusAttack ){
+
+        this.attackPower+=bonusAttack;
+        return this.attackPower;
+    }
+
+    public int healthIncrease(int bonusHealth){
+
+        this.healthPoints+=bonusHealth;
         return this.healthPoints;
     }
 
