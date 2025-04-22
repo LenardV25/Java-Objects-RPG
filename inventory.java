@@ -13,7 +13,12 @@ public class inventory {
     public int healthPotions;
     public int attackPotions;
 
-    
+    //initailize player attack boost 
+    public int attackBoost;
+
+     //initailize attack boost 
+     boolean atkBoost = false;
+
     public int bonusAttack = 10;
     public int bonusHealth = 10;
 
@@ -21,7 +26,9 @@ public class inventory {
         this.playerName = playerName;
         this.attackPotions = 1;
         this.healthPotions = 1;
+        this.attackBoost = 0;
     }
+
 
     public String getName(){
         return this.playerName;
@@ -64,20 +71,36 @@ public class inventory {
     }
         
     
-    
+    public int attackBoost(boolean atkBoost){
+        if (atkBoost = true){
+            attackBoost = 4;
+            while (attackBoost > 0){
+            System.out.println("*This increased strength won't last...*");
+            attackBoost--;
+            return this.attackBoost;
+            }
+        } else {
+            System.out.println("You feel your strength return to normal...");
+            return attackBoost = 0;
+        }
+        //System.out.println("You feel your strength return to normal...");
+        return attackBoost = 0;
+        
+    }
 
     
 
    public int attackPotion(){
     if (attackPotions <= 0){
         System.out.println("You've run out of attack potions!");
-        //displayInvent();
         return 0;
+
     } else {
-    System.out.println("You drink a potion of strength \nyou power grows within you temporarily...");
-    //System.out.println(bonusAttack + attackPower);
-    attackPotions--;
-    return bonusAttack;
+        attackPotions--;
+        System.out.println("You drink a potion of strength \npower grows within you temporarily...");
+        atkBoost=true;
+        attackBoost(atkBoost);
+        return bonusAttack;
     }
    }
 

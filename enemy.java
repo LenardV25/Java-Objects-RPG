@@ -51,7 +51,7 @@ public class enemy {
     }
 
     public int attack(){
-        System.out.println(this.name+ " attack the you for "+ attackPower+ " damage!");
+        //System.out.println(this.name+ " attacks you for "+ attackPower+ " damage!");
         return this.attackPower;
     }
 

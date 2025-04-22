@@ -8,6 +8,8 @@ public class player{
     public int healthPoints;
     public int attackPower;
     private int level;
+
+     
     
 
     public player(String playerName, int healthPoints, int attackPower, int level){
@@ -63,8 +65,8 @@ public class player{
     }
 
     public int attack(){
-        System.out.println();
-        System.out.println("You attack the enemy for "+ this.attackPower+ " damage!");
+        //System.out.println();
+        //System.out.println("You attack the enemy for "+ this.attackPower+ " damage!");
         return this.attackPower;
     }
 

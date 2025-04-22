@@ -13,7 +13,7 @@ public class main{
         System.out.println();
 
     //initailize character stats
-        player hero = new player(name, 30, 10,1);
+        player hero = new player(name, 30, 10,0);
         System.out.println("Hello "+ hero.playerName+ "!");
         
 
@@ -24,10 +24,13 @@ public class main{
     //initailize enemy stats
         enemy giant = new enemy("Giant", 40, 10, 3);
         System.out.println();
-
+   
     //start game
         System.out.println("You turn left and face against a giant");
         boolean quit = false; //flag controlling game loop
+
+        //initailize attack boost 
+        //boolean atkBoost = false;
 
         //-- Main Game Loop --
         while(!quit){
@@ -38,24 +41,33 @@ public class main{
         System.out.println();
         System.out.println(giant.displayInfo());
         System.out.println();
+
+            
+
+        //keep track of turns based on with attack boost
+        //new variable, increased strength turns remaining 
+        //new while countdown until returned to normal
+        
         
         //--Main Character Actions--
         //input.nextLine();
         System.out.println("What would you like to do?");
         System.out.println("1: Attack Enemy");
-        System.out.println("2: Reposition");
+        System.out.println("2: Reposition");    //needs work
         System.out.println("3: Check Inventory");
         System.out.println("4: Exit Game");
         System.out.print("Your Choice (1-4): ");
         int choice = input.nextInt();
         
+            
         //Process based on user choice 
         switch(choice){
             case 1:
                 System.out.println();
                 hero.attack();
-                hero.takeDamage(5);
+                hero.takeDamage(giant.attack());
                 giant.takeDamage(hero.attack());
+                items.attackBoost--;
                 break;
 
             case 2:
@@ -128,7 +140,7 @@ public class main{
             } 
 
      } //end of while loop
-
+     
     System.out.println("Thanks for playing!");
     input.close(); //close scanner to release system resources
         
