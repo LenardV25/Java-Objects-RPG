@@ -13,7 +13,7 @@ public class main{
         System.out.println();
 
     //initailize character stats
-        player hero = new player(name, 30, 10,0);
+        player hero = new player(name, 50, 10,0);
         System.out.println("Hello "+ hero.playerName+ "!");
         
 
@@ -22,7 +22,7 @@ public class main{
         //System.out.println("This are your items: ");
 
     //initailize enemy stats
-        enemy giant = new enemy("Giant", 40, 10, 3);
+        enemy giant = new enemy("Giant", 90, 10, 3);
         System.out.println();
    
     //start game
@@ -40,6 +40,22 @@ public class main{
         System.out.println(hero.displayInfo());
         System.out.println();
         System.out.println(giant.displayInfo());
+        System.out.println();
+
+        if (items.attackBoost >= 0){
+            System.out.println("*This increased strength won't last...*");
+            items.attackBoost--;
+            System.out.println("Attack boosted for "+items.attackBoost+" turns");
+            //items.bonusAttack = 10;
+            hero.attackIncrease(10);
+            
+        } else{
+            System.out.println("You feel your strength return to normal...");
+            items.bonusAttack = 0;
+            hero.attackDecrease(10);
+            //items.atkBoost=false;
+        }
+        //items.checkAtkBoost();
         System.out.println();
 
             
@@ -64,10 +80,16 @@ public class main{
         switch(choice){
             case 1:
                 System.out.println();
-                hero.attack();
+                
+                //hero.attack();
                 hero.takeDamage(giant.attack());
                 giant.takeDamage(hero.attack());
-                items.attackBoost--;
+                
+                //if(items.attackBoost > 0){
+                    //items.attackBoost--;
+                    //System.out.println("Attack boosted for "+items.attackBoost+" turns");
+                //}
+
                 break;
 
             case 2:
@@ -76,12 +98,11 @@ public class main{
                 break;
 
             case 3:
-                System.out.println();
-                //items.displayInvent();
-                System.out.println("This are your current items " + hero.playerName);
                 boolean leaveBag = false;
         
                 while(!leaveBag){
+                    System.out.println();
+                    System.out.println("This are your current items " + hero.playerName);
                     System.out.println("1) Attack Potions: "+ items.attackPotions+ " remaining\n2) Health Potions: "+ items.healthPotions+" remaining \n3) Return to battle"); 
                     switch(input.nextInt()){
                         case 1:

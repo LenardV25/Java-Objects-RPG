@@ -16,7 +16,7 @@ public class inventory {
     //initailize player attack boost 
     public int attackBoost;
 
-     //initailize attack boost 
+     //no attack boost until atk potion is used
      boolean atkBoost = false;
 
     public int bonusAttack = 10;
@@ -71,24 +71,21 @@ public class inventory {
     }
         
     
-    public int attackBoost(boolean atkBoost){
-        if (atkBoost = true){
-            attackBoost = 4;
-            while (attackBoost > 0){
+    public boolean checkAtkBoost(){
+        if (attackBoost > 0){
+            //System.out.println();
             System.out.println("*This increased strength won't last...*");
             attackBoost--;
-            return this.attackBoost;
-            }
-        } else {
-            System.out.println("You feel your strength return to normal...");
-            return attackBoost = 0;
-        }
-        //System.out.println("You feel your strength return to normal...");
-        return attackBoost = 0;
-        
-    }
+            System.out.println("Attack boosted turns left: "+this.attackBoost);
+            bonusAttack = 10;
+            return true;
+        } 
 
-    
+        System.out.println("You feel your strength return to normal...");
+        bonusAttack = 0;
+        atkBoost=false;
+        return false;          
+    }
 
    public int attackPotion(){
     if (attackPotions <= 0){
@@ -98,9 +95,13 @@ public class inventory {
     } else {
         attackPotions--;
         System.out.println("You drink a potion of strength \npower grows within you temporarily...");
-        atkBoost=true;
-        attackBoost(atkBoost);
-        return bonusAttack;
+        
+        //initialize atkboost timer and boolean
+        //atkBoost =true;
+        attackBoost = 5;
+        bonusAttack = 0;
+        //checkAtkBoost();
+        return this.bonusAttack;
     }
    }
 

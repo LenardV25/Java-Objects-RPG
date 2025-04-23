@@ -79,9 +79,18 @@ public class player{
 
     public int attackIncrease(int bonusAttack ){
 
-        this.attackPower+=bonusAttack;
+        this.attackPower += bonusAttack;
         return this.attackPower;
     }
+
+    public int attackDecrease(int amount){
+        
+        this.attackPower -= amount;
+        return this.attackPower;
+        
+        
+    }
+    
 
     public int healthIncrease(int bonusHealth){
 
