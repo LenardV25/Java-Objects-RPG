@@ -29,42 +29,37 @@ public class main{
         System.out.println("You turn left and face against a giant");
         boolean quit = false; //flag controlling game loop
 
-        //initailize attack boost 
-        //boolean atkBoost = false;
 
         //-- Main Game Loop --
         while(!quit){
         //System.out.println("You enter a fork in the road, do you left or right?");
         //String userChoice = input.nextLine().toLowerCase();
+
         System.out.println();//spacer
         System.out.println(hero.displayInfo());
         System.out.println();
         System.out.println(giant.displayInfo());
         System.out.println();
-
-        if (items.attackBoost >= 0){
-            System.out.println("*This increased strength won't last...*");
+        
+        //if atkboost is true, then they get additional atk damage added 
+        if (items.atkBoost == true){
             items.attackBoost--;
-            System.out.println("Attack boosted for "+items.attackBoost+" turns");
-            //items.bonusAttack = 10;
-            hero.attackIncrease(10);
-            
-        } else{
-            System.out.println("You feel your strength return to normal...");
-            items.bonusAttack = 0;
-            hero.attackDecrease(10);
-            //items.atkBoost=false;
+            if (items.attackBoost > 0){
+                System.out.println("*This increased strength won't last...*");
+                System.out.println("Attack boosted for "+items.attackBoost+" turns");
+                System.out.println();
+                System.out.println(hero.displayInfo());
+                
+            } else{     //if atk boost timer runs out, they return to normal atk damage
+                System.out.println("You feel your strength return to normal...");
+                hero.attackDecrease(10);
+                System.out.println(hero.displayInfo());
+                
+            }
         }
-        //items.checkAtkBoost();
         System.out.println();
 
-            
 
-        //keep track of turns based on with attack boost
-        //new variable, increased strength turns remaining 
-        //new while countdown until returned to normal
-        
-        
         //--Main Character Actions--
         //input.nextLine();
         System.out.println("What would you like to do?");
@@ -80,16 +75,8 @@ public class main{
         switch(choice){
             case 1:
                 System.out.println();
-                
-                //hero.attack();
                 hero.takeDamage(giant.attack());
                 giant.takeDamage(hero.attack());
-                
-                //if(items.attackBoost > 0){
-                    //items.attackBoost--;
-                    //System.out.println("Attack boosted for "+items.attackBoost+" turns");
-                //}
-
                 break;
 
             case 2:
@@ -113,8 +100,6 @@ public class main{
                         case 2:
                         System.out.println();
                         hero.healthIncrease(items.healthPotion());
-                        //items.healthPotion();
-                        
                         break;
         
                         default:
@@ -122,25 +107,22 @@ public class main{
                         leaveBag = true;
                     }
                 }
-                //hero.healthIncrease(items.healthPotion());
-                //items.displayInvent();
-                
                 break;
                
             case 4:
                 System.out.println();
-                //System.out.println("Safe Travels "+ hero.playerName.toLowerCase()+ "!");
                 quit = true; //end game loop
                 break;
                 
 
             default:
                 System.out.println();
-                System.out.println("Invalid choice. Please enter number between 1 and 3.");
+                System.out.println("Invalid choice. Please enter number between 1 and 4");
                 System.out.println("1: Attack Enemy");
-                System.out.println("2: Retreat");
-                System.out.println("3: Exit Game");
-                System.out.println("Your Choice (1-3): ");
+                System.out.println("2: Reposition");
+                System.out.println("3: Check Inventory");
+                System.out.println("4: Quit Game");
+                System.out.print("Your Choice (1-4): ");
                 input.nextInt();
         }
             //check if player has is died
@@ -168,15 +150,4 @@ public class main{
        
 }
 
-    public static void game(){
-        //goblin();
-        //player();
-    }
-    public static void goblin(){
-        enemy goblin = new enemy("Goblin", 25, 5, 3);
-        goblin.displayInfo();
-    }
-    public static void player(){
-        
-    }
 }

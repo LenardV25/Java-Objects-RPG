@@ -41,39 +41,11 @@ public class inventory {
     public void displayInvent(){
         System.out.println("This are your current items " + this.playerName);
         System.out.println("1) Health Potions: "+ this.healthPotions+ " remaining\n2) Attack Potions: "+ this.attackPotions+" remaining \n3) Return to battle"); 
-        /* 
-        boolean leaveBag = false;
-
-        while(!leaveBag){
-            
-            switch(readInput.nextInt()){
-                case 1:
-                //System.out.println("Using health potion");
-                attackPotion();
-                break;
-        
-                case 2:
-                //System.out.println("using attack potion");
-                healthPotion();
-                
-                break;
-
-                default:
-                System.out.println(("You take a deep breath before returning to battle..."));
-                leaveBag = true;
-                /* 
-                System.out.println("Press enter to leave inventory: ");
-                enterkey = readInput.nextLine();
-                if (enterkey.equals("")){
-                    System.out.println();
-                }
-                */
     }
         
     
     public boolean checkAtkBoost(){
         if (attackBoost > 0){
-            //System.out.println();
             System.out.println("*This increased strength won't last...*");
             attackBoost--;
             System.out.println("Attack boosted turns left: "+this.attackBoost);
@@ -96,11 +68,14 @@ public class inventory {
         attackPotions--;
         System.out.println("You drink a potion of strength \npower grows within you temporarily...");
         
+        //keep track of turns based on with attack boost
+        //new variable, increased strength turns remaining 
+        //new while countdown until returned to normal
         //initialize atkboost timer and boolean
-        //atkBoost =true;
+        
         attackBoost = 5;
-        bonusAttack = 0;
-        //checkAtkBoost();
+        bonusAttack = 10;
+        atkBoost = true;
         return this.bonusAttack;
     }
    }
@@ -108,13 +83,13 @@ public class inventory {
    public int healthPotion(){
     if (healthPotions <= 0){
         System.out.println("You've run out of health potions!");
-        //displayInvent();
         return 0;
+
     } else {
         System.out.println("You drink a potion of healing \nyour wounds begin to heal rapidly... ");
-        //System.out.println(bonusHealth +healthPoints);
         healthPotions--;
         return bonusHealth;
+
     }
     
    }

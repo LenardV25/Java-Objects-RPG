@@ -65,8 +65,6 @@ public class player{
     }
 
     public int attack(){
-        //System.out.println();
-        //System.out.println("You attack the enemy for "+ this.attackPower+ " damage!");
         return this.attackPower;
     }
 
@@ -84,14 +82,10 @@ public class player{
     }
 
     public int attackDecrease(int amount){
-        
-        this.attackPower -= amount;
+        attackPower -= amount;
         return this.attackPower;
         
-        
     }
-    
-
     public int healthIncrease(int bonusHealth){
 
         this.healthPoints+=bonusHealth;
