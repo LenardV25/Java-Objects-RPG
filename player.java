@@ -28,11 +28,17 @@ public class player{
     }
     //note: need to add public monster total keeping track of kills==>levels
     //level up mechanic
-    /*public int levelUp(){
-     * this.level+=1;
-     * System.out.println();
-     * System.out.println(this.playerName+" is now level "+ this.level);
-    } */
+    public String levelUp(){
+      this.level+=1;
+      System.out.println();
+      
+      String status =this.playerName+" has leveled up! \nHealth and Damage have increased by 2!";
+      this.attackPower +=2;
+      this.healthPoints +=2;
+      System.out.println();
+      System.out.println(displayInfo());
+      return status;
+    } 
 
     public int getHealthPoints(){
         return this.healthPoints;

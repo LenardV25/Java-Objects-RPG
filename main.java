@@ -19,7 +19,7 @@ public class main{
 
     //initailize inventory 
         inventory items = new inventory(name);
-        //System.out.println("This are your items: ");
+        
 
     //initailize enemy stats
         enemy giant = new enemy("Giant", 90, 10, 3);
@@ -32,42 +32,44 @@ public class main{
 
         //-- Main Game Loop --
         while(!quit){
-        //System.out.println("You enter a fork in the road, do you left or right?");
-        //String userChoice = input.nextLine().toLowerCase();
-
-        System.out.println();//spacer
-        System.out.println(hero.displayInfo());
         System.out.println();
         System.out.println(giant.displayInfo());
-        System.out.println();
         
         //if atkboost is true, then they get additional atk damage added 
         if (items.atkBoost == true){
             items.attackBoost--;
             if (items.attackBoost > 0){
+                System.out.println();
                 System.out.println("*This increased strength won't last...*");
                 System.out.println("Attack boosted for "+items.attackBoost+" turns");
                 System.out.println();
                 System.out.println(hero.displayInfo());
                 
-            } else{     //if atk boost timer runs out, they return to normal atk damage
+            }  
+            if (items.attackBoost == 0){     //if atk boost timer runs out, they return to normal atk damage
+                System.out.println();
                 System.out.println("You feel your strength return to normal...");
                 hero.attackDecrease(10);
-                System.out.println(hero.displayInfo());
+                //System.out.println();
+                //System.out.println(hero.displayInfo());
+                items.atkBoost = false;
                 
-            }
-        }
-        System.out.println();
+            }   
+        } 
 
+        if(items.atkBoost == false){ //if no atk boost, print normally 
+            System.out.println();
+            System.out.println(hero.displayInfo());
+        }
 
         //--Main Character Actions--
         //input.nextLine();
+        System.out.println();
         System.out.println("What would you like to do?");
         System.out.println("1: Attack Enemy");
-        System.out.println("2: Reposition");    //needs work
-        System.out.println("3: Check Inventory");
-        System.out.println("4: Exit Game");
-        System.out.print("Your Choice (1-4): ");
+        System.out.println("2: Check Inventory");
+        System.out.println("3: Exit Game");
+        System.out.print("Your Choice (1-3): ");
         int choice = input.nextInt();
         
             
@@ -80,11 +82,6 @@ public class main{
                 break;
 
             case 2:
-                System.out.println();
-                hero.takeDamage(10);
-                break;
-
-            case 3:
                 boolean leaveBag = false;
         
                 while(!leaveBag){
@@ -103,13 +100,14 @@ public class main{
                         break;
         
                         default:
+                        System.out.println();
                         System.out.println(("You take a deep breath before returning to battle..."));
                         leaveBag = true;
                     }
                 }
                 break;
                
-            case 4:
+            case 3:
                 System.out.println();
                 quit = true; //end game loop
                 break;
@@ -117,13 +115,8 @@ public class main{
 
             default:
                 System.out.println();
-                System.out.println("Invalid choice. Please enter number between 1 and 4");
-                System.out.println("1: Attack Enemy");
-                System.out.println("2: Reposition");
-                System.out.println("3: Check Inventory");
-                System.out.println("4: Quit Game");
-                System.out.print("Your Choice (1-4): ");
-                input.nextInt();
+                System.out.println("Invalid choice. Please enter number between 1 and 3");
+                break;
         }
             //check if player has is died
             if (hero.isDefeated() == true){
@@ -133,13 +126,17 @@ public class main{
                 System.out.println();
                 System.out.println("The battle has ended. Better luck next time "+ hero.playerName.toLowerCase()+ "!");
                 quit = true; //end game loop
+
             } else if (giant.isDefeated()== true){
                 System.out.println("Congratulations the "+ giant.name + " has taken too much damage and died!");
                 System.out.println();
                 System.out.println(giant.displayInfo());
                 System.out.println();
+                System.out.println(hero.levelUp());
+                System.out.println();
                 System.out.println("The battle had ended. Safe Travels "+ hero.playerName.toLowerCase()+ "!");
                 quit = true; //end game loop
+
             } 
 
      } //end of while loop

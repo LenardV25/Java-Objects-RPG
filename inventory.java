@@ -25,7 +25,7 @@ public class inventory {
     public inventory(String playerName){
         this.playerName = playerName;
         this.attackPotions = 1;
-        this.healthPotions = 1;
+        this.healthPotions = 2;
         this.attackBoost = 0;
     }
 
